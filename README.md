@@ -31,18 +31,20 @@ SimpleBlog is a lightweight blogging platform built using ASP.NET Core MVC. It f
    git clone https://github.com/Vivek9602/Blog_Assessment.git
    cd Blog_Assessment/Blog
 2. **Setup Database**
+   ```bash
     Powershell: sqllocaldb create "localDB1"
     Change Connection String
 4. **Run the program**
+   ```bash
      dotnet restore
      dotnet build
      dotnet run
 
 ### Credentials
 Admin: 
-User: admin
-Password: password
+- User: admin
+- Password: password
 
 Test User:
-User: testuser
-Password: testpass
+- User: testuser
+- Password: testpass
