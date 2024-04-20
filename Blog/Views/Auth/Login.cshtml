@@ -1,0 +1,90 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = null; 
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .sign-in-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+            .sign-in-form div {
+                margin-bottom: 10px;
+            }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="password"], input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+
+        input[type="submit"] {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #004494;
+            }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #0056b3;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <form class="sign-in-form" asp-controller="Auth" asp-action="Login" method="post">
+        <div>
+            <label for="UserName">Username</label>
+            <input asp-for="UserName" type="text" />
+        </div>
+        <div>
+            <label for="Password">Password</label>
+            <input asp-for="Password" type="password" />
+        </div>
+        <div>
+            <input type="submit" value="Sign In" />
+            <a asp-controller="Auth" asp-action="Register">Register</a>
+        </div>
+    </form>
+</body>
+</html>

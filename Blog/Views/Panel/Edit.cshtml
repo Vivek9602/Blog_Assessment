@@ -1,0 +1,107 @@
+﻿@model PostViewModel
+
+@{
+    Layout = null; 
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+    <link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f9f9f9;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="file"], select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div>
+        <form asp-controller="Panel" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input asp-for="Id" type="hidden" />
+            <div>
+                <label>Title</label>
+                <input asp-for="Title" />
+            </div>
+            <div>
+                <label>Description</label>
+                <input asp-for="Description" />
+            </div>
+            <div>
+                <label>Tags</label>
+                <input asp-for="Tags" />
+            </div>
+            <div>
+                <label>Category</label>
+                <select asp-for="Category">
+                    <option value="Travel">Travel</option>
+                    <option value="Programming">Programming</option>
+                    <option value="Photography">Photography</option>
+                </select>
+            </div>
+            <div>
+                <label>Body</label>
+                <textarea id="editor" asp-for="Body"></textarea>
+            </div>
+            <div>
+                <label>Image</label>
+                <input asp-for="CurrentImage" type="hidden" />
+                <input asp-for="Image" type="file" />
+            </div>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</body>
+
+@section scripts {
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="~/lib/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+    <script>
+        $('#editor').trumbowyg();
+    </script>
+}
+</html>

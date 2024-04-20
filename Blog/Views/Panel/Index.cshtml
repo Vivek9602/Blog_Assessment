@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Post>
+
+@{
+    Layout = null; 
+ }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav {
+            width: 100%;
+            background: #005A9C;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+            nav a {
+                color: white;
+                text-decoration: none;
+                padding: 10px 15px; 
+            }
+
+                nav a:hover {
+                    text-decoration: underline;
+                }
+                          
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        li {
+            background: #fff;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            li a {
+                margin-left: 10px;
+                font-weight: bold;
+                color: #007BFF;
+            }
+
+                li a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" title="Home">Home</a>
+        <a href="/programming" title="Programming">Programming</a>
+        <a href="/logout" title="Logout">Logout</a>
+    </nav>
+    <h2>Admin Panel</h2>
+    <a asp-controller="Panel" asp-action="Edit">Add New Post</a>
+    <div>
+        <ul>
+            @foreach (var post in Model)
+            {
+                <li>
+                    @post.Title
+                    <span>
+                        <a asp-controller="Panel" asp-action="Edit" asp-route-id="@post.Id">Edit</a>
+                        -
+                        <a asp-controller="Panel" asp-action="Remove" asp-route-id="@post.Id">Remove</a>
+                    </span>
+                </li>
+            }
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿@model RegisterViewModel
+
+@{
+    Layout = null; 
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .sign-in-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+            .sign-in-form div {
+                margin-bottom: 10px;
+            }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"], input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            // Includes padding and border in element's width
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+        span.validation-message {
+            color: #cc0000;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <form class="sign-in-form" asp-controller="Auth" asp-action="Register" method="post">
+        <div>
+            <label>Email</label>
+            <input asp-for="Email" type="email" />
+            <span asp-validation-for="Email" class="validation-message"></span>
+        </div>
+        <div>
+            <label>Password</label>
+            <input asp-for="Password" type="password" />
+            <span asp-validation-for="Password" class="validation-message"></span>
+        </div>
+        <div>
+            <label>Confirm Password</label>
+            <input asp-for="ConfirmPassword" type="password" />
+            <span asp-validation-for="ConfirmPassword" class="validation-message"></span>
+        </div>
+        <div>
+            <input type="submit" value="Sign Up" />
+        </div>
+    </form>
+</body>
+</html>
